@@ -305,6 +305,18 @@ p { margin: 0 0 16px; color: var(--color-text-muted); }
 .contact-details p { margin: 0; color: var(--color-text-muted); }
 .contact-details strong { color: var(--color-text); display: block; margin-bottom: 2px; }
 
+.booking-card {
+  margin-top: 32px;
+  padding: 24px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.booking-card h3 { margin-bottom: 8px; }
+.booking-card p { font-size: 0.92rem; margin-bottom: 18px; }
+.booking-card .btn { font-size: 0.9rem; padding: 11px 20px; }
+
 .contact-form {
   background: var(--color-surface);
   border: 1px solid var(--color-border);
