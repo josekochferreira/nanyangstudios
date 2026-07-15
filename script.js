@@ -17,12 +17,35 @@ nav.querySelectorAll("a").forEach((link) => {
 
 const form = document.getElementById("contactForm");
 const formNote = document.getElementById("formNote");
+const INQUIRY_EMAIL = "sales@nanyangstudios.com";
 
-form.addEventListener("submit", (event) => {
-  event.preventDefault();
-  formNote.textContent = "Thanks — your inquiry has been noted. We'll get back to you shortly.";
-  form.reset();
-});
+if (form) {
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const data = new FormData(form);
+    const name = data.get("name");
+    const company = data.get("company");
+    const email = data.get("email");
+    const message = data.get("message");
+
+    const subject = `Tour inquiry from ${name} (${company})`;
+    const body = [
+      `Name: ${name}`,
+      `Company: ${company}`,
+      `Email: ${email}`,
+      "",
+      "Tour goals:",
+      message,
+    ].join("\n");
+
+    const mailtoUrl = `mailto:${INQUIRY_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailtoUrl;
+
+    formNote.textContent = "Opening your email client to send this to our team — please hit send there to complete your inquiry.";
+    form.reset();
+  });
+}
 
 const revealEls = document.querySelectorAll(".reveal");
 
